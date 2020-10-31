@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Dashboard;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,14 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->middleware(['auth:sanctum', 'verified']);
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
-
-Route::group(['middleware' => ['auth:sanctum', 'verifeid']], function () {
-    Route::get('/', );
+Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
+    Route::get('/', Dashboard::class )->name('dashboard');
 });
