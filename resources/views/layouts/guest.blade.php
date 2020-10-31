@@ -19,13 +19,15 @@
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.js" defer></script>
     </head>
     <body class="h-screen">
-        <nav class="w-full bg-gray-900 text-2xl text-red-600 px-6 py-2 font-mono font-semibold">
+        <nav class="w-full bg-gray-900 text-2xl text-red-600 px-6 py-2 font-mono font-semibold fixed">
             tobenski<span class="text-white">Booking</span>
         </nav>
 
         {{ $slot }}
 
-
+        <footer class="fixed bottom-0 w-full p-4 bg-gray-900 text-white text-sm">
+            FOOTER
+        </footer>
     @livewireScripts
     </body>
 </html>
