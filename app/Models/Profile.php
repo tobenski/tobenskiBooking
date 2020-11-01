@@ -32,8 +32,13 @@ class Profile extends Model
         'active' => 'boolean',
     ];
 
-    public function Users()
+    public function users()
     {
         return $this->hasMany(User::class);
+    }
+
+    public function hours()
+    {
+        return $this->hasMany(Hours::class);
     }
 }
