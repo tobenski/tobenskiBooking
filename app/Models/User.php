@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\HasRoles;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -19,7 +20,9 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
     use SoftDeletes;
+    use HasRoles;
 
+    protected $table = 'users';
     /**
      * The attributes that are mass assignable.
      *
@@ -29,16 +32,7 @@ class User extends Authenticatable
         'name',
         'phone',
         'email',
-        'address',
-        'zip',
-        'city',
-        'country',
-        'lang',
-        'timezone',
-        '24_hour',
-        'logo',
         'password',
-        'active',
     ];
 
     /**
@@ -60,8 +54,6 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'active' => 'boolean',
-        'role' => 'boolean',
     ];
 
     /**
@@ -70,6 +62,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $appends = [
-        'profile_photo_url',
     ];
+
+    public function profile()
+    {
+        return $this->belongsTo(Profile::class);
+    }
 }

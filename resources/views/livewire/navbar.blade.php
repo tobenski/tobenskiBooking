@@ -17,7 +17,7 @@
                     {{ Auth::user()->name }}
                 </div>
                 <div class="text-gray-300">
-                    <a href="{{ route('settings') }}" class="pr-2">
+                    <a href="{{ route('settings', 'profile') }}" class="pr-2">
                         {{ __('Opsætning') }}
                     </a>
                     <a href="#" class="pr-2">

@@ -18,27 +18,17 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('phone');
             $table->string('email')->unique();
-            $table->string('address')->nullable();
-            $table->string('zip')->nullable();
-            $table->string('city')->nullable();
-            $table->string('country')->default('Denmark (Danmark) (+45)');
-
-            $table->string('lang')->default('Dansk');
-            $table->string('timezone')->default('(GMT +01:00) Brussels, Copenhagen, Madrid, Paris');
-            $table->boolean('24_hour')->default(true);
 
             $table->string('password');
-
-            //$table->foreignId('current_team_id')->nullable();
-            $table->text('logo')->nullable();
-
-            $table->boolean('active')->default(false);
-            $table->boolean('admin')->default(false);
 
             $table->rememberToken();
             $table->timestamp('email_verified_at')->nullable();
             $table->softDeletes();
             $table->timestamps();
+
+            $table->unsignedBigInteger('profile_id')->nullable();
+            $table->foreign('profile_id')->references('id')->on('profiles')
+                  ->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 

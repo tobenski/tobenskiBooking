@@ -16,21 +16,25 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
-            'name' => 'Det Gamle Posthus',
-            'phone' => '42807678',
-            'email' => 'kontakt@det-gamle-posthus.dk',
+        $this->call([
+            ProfileSeeder::class,
+        ]);
+
+        $u = User::create([
+            'name' => 'Knud Rishøj',
+            'phone' => '23290172',
+            'email' => 'knud@det-gamle-posthus.dk',
             'password' => Hash::make('Password'),
             'email_verified_at' => Carbon::now(),
-            'active' => true,
+            'profile_id' => 1
         ]);
+        $u->addRole('admin');
         User::create([
             'name' => 'Knudhule Badehotel',
             'phone' => '42807678',
             'email' => 'info@knudhule.dk',
             'password' => Hash::make('Password'),
             'email_verified_at' => Carbon::now(),
-            'active' => false,
         ]);
         // \App\Models\User::factory(10)->create();
     }
