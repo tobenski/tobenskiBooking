@@ -14,12 +14,14 @@
             </div>
             <div class="flex flex-col text-gray-500 text-xs py-2 px-4 md:px-0">
                 <div>
-                    {{ Auth::user()->name }}
+                    {{ Auth::user()->profile->name }}
                 </div>
                 <div class="text-gray-300">
+                    @if( Auth::user()->hasRole('admin'))
                     <a href="{{ route('settings', 'profile') }}" class="pr-2">
                         {{ __('Opsætning') }}
                     </a>
+                    @endif
                     <a href="#" class="pr-2">
                         {{ __('Hjælp') }}
                     </a>

@@ -23,7 +23,7 @@
     </head>
     <body class="h-screen">
         @livewire('navbar')
-        <main class="flex w-full bg-gray-300 flex-col md:flex-row h-full pt-6">
+        <main class="flex w-full bg-gray-300 flex-col md:flex-row min-h-full pt-6">
             @auth
                 <aside class="w-72">
                     {{ $sidebar }}
