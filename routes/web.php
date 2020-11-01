@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Livewire\Dashboard;
+use App\Http\Livewire\Settings;
+use App\View\Components\Settings\Profile;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,5 +17,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
-    Route::get('/', Dashboard::class )->name('dashboard');
+    Route::get('/', Dashboard::class )->name('home');
+    Route::get('/settings/{page?}', Settings::class)->name('settings');
 });

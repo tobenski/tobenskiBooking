@@ -4,8 +4,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <title>{{ config('app.name', 'tobenskiBooking') }} @auth - {{ Auth::user()->name }} @endauth</title>
 
-        <title>tobenskiBooking - {{ Auth::user()->name }}</title>
+
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -20,14 +21,20 @@
     </head>
     <body class="h-screen">
         @livewire('navbar')
+        <main class="flex w-full bg-gray-300 flex-col md:flex-row h-full pt-6">
+            @auth
+                <aside class="w-72">
+                    {{ $sidebar }}
+                </aside>
+                <section class="flex flex-col w-full justify-start md:pl-6 pr-4 items-start">
+                    {{ $slot }}
+                </section>
+            @endauth
 
-        {{ $slot }}
-
-
-
-        <footer class="bottom-0 w-full p-4 bg-gray-900 text-white text-sm">
-            FOOTER
-        </footer>
+            @guest
+                {{ $slot }}
+            @endguest
+        </main>
     @livewireScripts
     </body>
 </html>

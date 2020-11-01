@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-app-layout>
     <div class="flex items-center justify-center h-full w-full bg-gray-200">
         @if (session('status'))
         <div class="mb-4 font-medium text-sm text-green-600 w-1/3">
@@ -13,6 +13,7 @@
                     <input type="email"
                         name="email"
                         id="email"
+                        value="{{ old('email') }}"
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         placeholder="E-mail">
                     @error('email')
@@ -50,4 +51,4 @@
             </form>
         </div>
     </div>
-</x-guest-layout>
+</x-app-layout>

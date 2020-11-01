@@ -16,14 +16,27 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('phone');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('address')->nullable();
+            $table->string('zip')->nullable();
+            $table->string('city')->nullable();
+            $table->string('country')->default('Denmark (Danmark) (+45)');
+
+            $table->string('lang')->default('Dansk');
+            $table->string('timezone')->default('(GMT +01:00) Brussels, Copenhagen, Madrid, Paris');
+            $table->boolean('24_hour')->default(true);
+
             $table->string('password');
-            $table->rememberToken();
-            $table->foreignId('current_team_id')->nullable();
-            $table->text('profile_photo_path')->nullable();
+
+            //$table->foreignId('current_team_id')->nullable();
+            $table->text('logo')->nullable();
+
             $table->boolean('active')->default(false);
             $table->boolean('admin')->default(false);
+
+            $table->rememberToken();
+            $table->timestamp('email_verified_at')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
