@@ -10,6 +10,7 @@
                 </div>
             </div>
         @endif
+
         @for($i = 1; $i <= 7; $i++)
             @include('components.settings.hours.day', ['day' => $i])
         @endfor
