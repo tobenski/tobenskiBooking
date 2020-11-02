@@ -62,9 +62,23 @@ class Settings extends Component
         'dayOfWeek.*.*.online_booking' => 'required|boolean',
     ];
 
-    public function updated($propertyName)
+    public function updated($name, $value)
     {
-        $this->validateOnly($propertyName);
+        $this->validateOnly($name);
+        $nameArray = explode(".", $name);
+        //list($propertyName, $day, $hour, $prop) =
+        if($nameArray[0] == 'dayOfWeek')
+        {
+            $record = Hours::find($this->dayOfWeek[$nameArray[1]][$nameArray[2]]['id']);
+            $record->update([
+                $nameArray[3] => $value,
+            ]);
+        } else if ($nameArray[0] == 'profile') {
+            $this->profile->update([
+                $nameArray[1] => $value,
+            ]);
+        }
+
     }
 
     public function updateProfileData()
@@ -136,7 +150,7 @@ class Settings extends Component
 
     public function destroyHour($day = null, $index = null)
     {
-        if ($day != null && $index != null) {
+        if ($day !== null && $index !== null) {
             $record = Hours::find($this->dayOfWeek[$day][$index]['id']);
             $record->delete();
             unset($this->dayOfWeek[$day][$index]);
