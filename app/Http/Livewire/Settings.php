@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Hours;
 use App\Models\Profile;
+use App\Models\Room;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -14,6 +15,7 @@ class Settings extends Component
     public User $user;
     public Profile $profile;
     public Hours $newhour;
+    public $rooms;
 
     public $dayOfWeekHeader = [];
     public $dayOfWeekName = [];
@@ -32,6 +34,7 @@ class Settings extends Component
             'closing_time' => '0:00',
             'online_booking' => true,
         ]);
+        $this->rooms = $this->profile->rooms;
     }
 
     public function render()
@@ -60,6 +63,9 @@ class Settings extends Component
         'dayOfWeek.*.*.opening_time' => 'required|string',
         'dayOfWeek.*.*.closing_time' => 'required|string',
         'dayOfWeek.*.*.online_booking' => 'required|boolean',
+        // Rooms
+        'rooms.*.name' => 'required',
+        'rooms.*.priority' => 'required|integer|between:0,5',
     ];
 
     public function updated($name, $value)
@@ -76,6 +82,11 @@ class Settings extends Component
         } else if ($nameArray[0] == 'profile') {
             $this->profile->update([
                 $nameArray[1] => $value,
+            ]);
+        } else if ($nameArray[0] == 'rooms') {
+            $record = Room::find($this->rooms[$nameArray[1]]['id']);
+            $record->update([
+                $nameArray[2] => $value,
             ]);
         }
 

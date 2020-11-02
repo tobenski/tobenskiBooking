@@ -9,6 +9,9 @@
         @case('hours')
             @include('components.settings.hours')
             @break
+        @case('rooms')
+            @include('components.settings.rooms')
+            @break
         @default
         Unknown Page
     @endswitch

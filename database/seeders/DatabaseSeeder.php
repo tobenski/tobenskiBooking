@@ -19,25 +19,12 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             ProfileSeeder::class,
+            UserSeeder::class,
             HoursSeeder::class,
+            RoomSeeder::class,
         ]);
 
-        $u = User::create([
-            'name' => 'Knud Rishøj',
-            'phone' => '23290172',
-            'email' => 'knud@det-gamle-posthus.dk',
-            'password' => Hash::make('Password'),
-            'email_verified_at' => Carbon::now(),
-            'profile_id' => 1
-        ]);
-        $u->addRole('admin');
-        User::create([
-            'name' => 'Knudhule Badehotel',
-            'phone' => '42807678',
-            'email' => 'info@knudhule.dk',
-            'password' => Hash::make('Password'),
-            'email_verified_at' => Carbon::now(),
-        ]);
+
         // \App\Models\User::factory(10)->create();
     }
 }

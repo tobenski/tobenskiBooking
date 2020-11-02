@@ -46,4 +46,9 @@ class Profile extends Model
     {
         return $this->hasMany(Hours::class)->where('weekday', $day)->get();
     }
+
+    public function rooms()
+    {
+        return $this->hasMany(Room::class);
+    }
 }
