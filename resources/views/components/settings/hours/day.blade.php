@@ -1,6 +1,6 @@
 <div class="md:flex md:items-center mb-6 border border-black rounded-lg p-4">
-    <div class="flex md:w-1/5 items-start">
-        <label for="opening_time" class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">{{ __($dayOfWeekHeader[$day]) }}  </label>
+    <div class="flex md:w-1/5 items-start flex-col">
+        <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">{{ __($dayOfWeekHeader[$day]) }}</label>
     </div>
     @if(count($dayOfWeek[$day]))
         <div class="flex flex-col md:w-4/5">
@@ -27,7 +27,7 @@
                             class="pl-4 bg-gray-200 appearence-none border-2 border-gray-200 rounded py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500">
                         <label for="online_booking">{{ __('Online Booking') }}</label>
                     </div>
-                    <button class="float-right mr-6">
+                    <button wire:click.prevent="destroyHour({{ $day }}, {{ $index }})" class="float-right mr-6">
                         <i class="far fa-trash-alt"></i>
                     </button>
                 </div>

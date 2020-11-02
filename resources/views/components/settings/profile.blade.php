@@ -1,7 +1,7 @@
 <div class="flex flex-col items-center w-full justify-center">
     <h1 class="text-3xl text-gray-800">{{ __('Stamdata') }}</h1>
     <form class="max-w-sm md:max-w-full w-10/12 bg-white border border-black p-6 rounded-lg shadow-lg"
-          wire:submit.prevent="opdater">
+          wire:submit.prevent="updateProfileData">
         @csrf
         @if (session()->has('message'))
             <div class="flex items-center justify-center w-full bg-gray-300 border border-black rounded-lg mb-6">
@@ -130,7 +130,7 @@
     <hr class="my-2">
     <h1 class="text-3xl text-gray-800">{{ __('Regionalle instillinger') }}</h1>
     <form class="max-w-sm md:max-w-full w-10/12 bg-white border border-black p-6 rounded-lg shadow-lg mb-12"
-          wire:submit.prevent="opdater">
+          wire:submit.prevent="updateProfileData">
         @csrf
         @if (session()->has('message'))
             <div class="flex items-center justify-center w-full bg-gray-300 border border-black rounded-lg mb-6">
