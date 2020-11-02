@@ -53,16 +53,12 @@ class Settings extends Component
         'profile.24_hour' => 'boolean',
         // Hours
         'newhour.weekday' => 'required|integer|between:1,7',
-        'newhour.opening_time' => 'required|date',
-        'newhour.closing_time' => 'required|date|after:dayOfWeek.*.opening_time',
+        'newhour.opening_time' => 'required|string',
+        'newhour.closing_time' => 'required|string',
         'newhour.online_booking' => 'required|boolean',
-        'dayOfWeek.0.0.weekday' => 'required|integer|between:1,7',
-        'dayOfWeek.0.0.opening_time' => 'required|date',
-        'dayOfWeek.0.0.closing_time' => 'required|date|after:dayOfWeek.*.opening_time',
-        'dayOfWeek.0.0.online_booking' => 'required|boolean',
         'dayOfWeek.*.*.weekday' => 'required|integer|between:1,7',
-        'dayOfWeek.*.*.opening_time' => 'required|date',
-        'dayOfWeek.*.*.closing_time' => 'required|date|after:dayOfWeek.*.opening_time',
+        'dayOfWeek.*.*.opening_time' => 'required|string',
+        'dayOfWeek.*.*.closing_time' => 'required|string',
         'dayOfWeek.*.*.online_booking' => 'required|boolean',
     ];
 
@@ -93,8 +89,8 @@ class Settings extends Component
     {
         $this->validate([
             'newhour.weekday' => 'required|integer|between:1,7',
-            'newhour.opening_time' => 'required|date',
-            'newhour.closing_time' => 'required|date|after:dayOfWeek.*.opening_time',
+            'newhour.opening_time' => 'required|string',
+            'newhour.closing_time' => 'required|string',
             'newhour.online_booking' => 'required|boolean',
         ]);
         $this->newhour->profile_id = $this->profile->id;
@@ -107,6 +103,35 @@ class Settings extends Component
         ]);
         $this->dayOfWeek = $this->fillDays();
         session()->flash('message', __('Åbningstid ´tilføjet!!'));
+    }
+
+    public function updateHourData()
+    {
+        $this->validate([
+            //'dayOfWeek.*.*.weekday' => 'required|integer|between:1,7',
+            'dayOfWeek.*.*.opening_time' => 'required|string',
+            'dayOfWeek.*.*.closing_time' => 'required|string',
+            'dayOfWeek.*.*.online_booking' => 'required|boolean',
+        ]);
+
+        foreach($this->dayOfWeek as $day)
+        {
+            foreach($day as $hour)
+            {
+                if(isset($hour))
+                {
+                    $record = Hours::find($hour['id']);
+                    $record->update([
+                        'opening_time' => $hour['opening_time'],
+                        'closing_time' => $hour['closing_time'],
+                        'online_booking' => $hour['online_booking'],
+                    ]);
+                }
+            }
+        }
+
+        $this->dayOfWeek = $this->fillDays();
+        session()->flash('message', __('åbningstider er gemt!!'));
     }
 
     public function destroyHour($day = null, $index = null)

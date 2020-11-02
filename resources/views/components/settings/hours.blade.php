@@ -1,10 +1,18 @@
 <div class="flex flex-col items-center w-full justify-center">
+    @if(session()->has('error'))
+        <div class="w-10/12 bg-white border border-black p-6 rounded-lg shadow-lg justify-between mb-12">
+            @foreach(session()->error as $msg)
+                {{ $msg }}<br>
+            @endforeach
+        </div>
+    @endif
+
     <h1 class="text-3xl text-gray-800">{{ __('Tilføj åbningstid') }}</h1>
     <form class="w-10/12 bg-white border border-black p-6 rounded-lg shadow-lg mb-12">
         @csrf
         <div class="md:flex md:items-center rounded-lg p-4">
             <div class="flex md:w-1/5 items-start flex-col">
-                <select wire:model="newhour.weekday mr-4">
+                <select wire:model="newhour.weekday">
                     <option value="0">Vælg En Dag</option>
                     <option value="1">{{ __('Mandag') }}</option>
                     <option value="2">{{ __('Tirsdag') }}</option>
@@ -52,12 +60,11 @@
                     </button>
                 </div>
             </div>
-
-
         </div>
     </form>
     <h1 class="text-3xl text-gray-800">{{ __('Åbningstider') }}</h1>
-    <form class="w-10/12 bg-white border border-black p-6 rounded-lg shadow-lg mb-12">
+    <form class="w-10/12 bg-white border border-black p-6 rounded-lg shadow-lg mb-12"
+        wire:submit.prevent="updateHourData">
         @csrf
         @if (session()->has('message'))
             <div class="flex items-center justify-center w-full bg-gray-300 border border-black rounded-lg mb-6">

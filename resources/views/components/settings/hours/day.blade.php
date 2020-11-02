@@ -12,12 +12,18 @@
                             id="opening_time"
                             wire:model="dayOfWeek.{{ $day . '.' . $index }}.opening_time"
                             class="mr-4 pl-4 bg-gray-200 appearence-none border-2 border-gray-200 rounded py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500">
+                        @error('dayOfWeek.{{ $day . '.' . $index }}.opening_time')
+                            <span class="text-red-500 italic text-xs">{{ $message }}</span>
+                        @enderror
                         <label>til</label>
                         <input type="time"
                             name="closing_time"
                             id="closing_time"
                             wire:model="dayOfWeek.{{ $day . '.' . $index }}.closing_time"
                             class="mx-4 pl-4 bg-gray-200 appearence-none border-2 border-gray-200 rounded py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500">
+                        @error('dayOfWeek.{{ $day . '.' . $index }}.closing_time')
+                            <span class="text-red-500 italic text-xs">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="flex items-center mx-4">
                         <input type="checkbox"
