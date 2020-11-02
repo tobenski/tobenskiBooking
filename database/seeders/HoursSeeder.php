@@ -16,21 +16,21 @@ class HoursSeeder extends Seeder
      */
     public function run()
     {
-        $profile_id = Profile::where('email', 'kontakt@det-gamle-posthus.dk')->first();
+        $profile_id = Profile::where('email', 'kontakt@det-gamle-posthus.dk')->first()->id;
         Hours::create([
             'weekday' => 1,
-            'opening_time' => Carbon::createFromTime(11,30,0),
-            'closing_time' => Carbon::createFromTime(21,30,0),
+            'opening_time' => '11:30',
+            'closing_time' => '16:30',
             'online_booking' => true,
             'profile_id' => $profile_id,
         ]);
         Hours::create([
-            'weekday' => 2,
-            'opening_time' => Carbon::createFromTime(11,30,0),
-            'closing_time' => Carbon::createFromTime(21,30,0),
+            'weekday' => 1,
+            'opening_time' => '17:30',
+            'closing_time' => '22:00',
             'online_booking' => true,
             'profile_id' => $profile_id,
-        ]);
+        ]);/*
         Hours::create([
             'weekday' => 3,
             'opening_time' => Carbon::createFromTime(11,30,0),
@@ -65,6 +65,6 @@ class HoursSeeder extends Seeder
             'closing_time' => Carbon::createFromTime(21,30,0),
             'online_booking' => true,
             'profile_id' => $profile_id,
-        ]);
+        ]);*/
     }
 }

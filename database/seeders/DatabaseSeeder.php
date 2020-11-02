@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Hours;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
@@ -18,6 +19,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             ProfileSeeder::class,
+            HoursSeeder::class,
         ]);
 
         $u = User::create([

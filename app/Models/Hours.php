@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -28,8 +29,29 @@ class Hours extends Model
         'online_booking' => 'boolean',
     ];
 
+    public function getOpeningTimeAttribute()
+    {
+        return Carbon::createFromTimeString($this->attributes['opening_time'])->toTimeString('minute');
+    }
+
+    public function getClosingTimeAttribute()
+    {
+        return Carbon::createFromTimeString($this->attributes['closing_time'])->toTimeString('minute');
+    }
+
+    public function setOpeningTimeAttribute($value)
+    {
+        $this->attributes['opening_time'] = Carbon::createFromFormat('H:i', $value);
+    }
+
+    public function setClosingTimeAttribute($value)
+    {
+        $this->attributes['closing_time'] = Carbon::createFromFormat('H:i', $value);
+    }
+
     public function profile()
     {
         return $this->belongsTo(Profile::class);
     }
+
 }

@@ -1,6 +1,6 @@
 <div class="flex flex-col items-center w-full justify-center">
     <h1 class="text-3xl text-gray-800">{{ __('Stamdata') }}</h1>
-    <form class="max-w-sm xl:max-w-lg w-1/2 bg-white border border-black p-6 rounded-lg shadow-lg"
+    <form class="max-w-sm md:max-w-full w-10/12 bg-white border border-black p-6 rounded-lg shadow-lg"
           wire:submit.prevent="opdater">
         @csrf
         @if (session()->has('message'))
@@ -27,7 +27,7 @@
         </div>
         <div class="md:flex md:items-center mb-6">
             <div class="md:w-1/3">
-                <label for="email" class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">{{ __('Email') }}  </label>
+                <label for="email" class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">{{ __('Email') }} </label>
             </div>
             <div class="md:w-2/3">
                 <input type="email"
@@ -122,14 +122,14 @@
             <div class="md:w-2/3 md:flex md:justify-end">
               <button class="shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
                       type="submit">
-                Opdater <i class="far fa-check-circle invisible" wire:dirty.class.remove="invisible" wire:target="profile.name"></i>
+                Opdater
               </button>
             </div>
           </div>
     </form>
     <hr class="my-2">
     <h1 class="text-3xl text-gray-800">{{ __('Regionalle instillinger') }}</h1>
-    <form class="max-w-sm xl:max-w-lg w-1/2 bg-white border border-black p-6 rounded-lg shadow-lg mb-12"
+    <form class="max-w-sm md:max-w-full w-10/12 bg-white border border-black p-6 rounded-lg shadow-lg mb-12"
           wire:submit.prevent="opdater">
         @csrf
         @if (session()->has('message'))
