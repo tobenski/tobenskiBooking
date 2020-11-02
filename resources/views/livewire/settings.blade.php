@@ -12,9 +12,10 @@
         @case('rooms')
             @include('components.settings.rooms')
             @break
+        @case('tables')
+            @include('components.settings.tables')
+            @break
         @default
         Unknown Page
     @endswitch
-
-
 </div>

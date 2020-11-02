@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Hours;
 use App\Models\Profile;
 use App\Models\Room;
+use App\Models\Table;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -16,6 +17,7 @@ class Settings extends Component
     public Profile $profile;
     public Hours $newhour;
     public $rooms;
+    public $tables;
 
     public $dayOfWeekHeader = [];
     public $dayOfWeekName = [];
@@ -35,6 +37,8 @@ class Settings extends Component
             'online_booking' => true,
         ]);
         $this->rooms = $this->profile->rooms;
+        $this->tables = $this->profile->tables;
+
     }
 
     public function render()
@@ -66,6 +70,10 @@ class Settings extends Component
         // Rooms
         'rooms.*.name' => 'required',
         'rooms.*.priority' => 'required|integer|between:0,5',
+        // Tables
+        'tables.*.name' => 'required',
+        'tables.*.priority' => 'required|integer|between:0,5',
+        'tables.*.seats' => 'required',
     ];
 
     public function updated($name, $value)
@@ -85,6 +93,11 @@ class Settings extends Component
             ]);
         } else if ($nameArray[0] == 'rooms') {
             $record = Room::find($this->rooms[$nameArray[1]]['id']);
+            $record->update([
+                $nameArray[2] => $value,
+            ]);
+        } else if ($nameArray[0] == 'tables') {
+            $record = Table::find($this->tables[$nameArray[1]]['id']);
             $record->update([
                 $nameArray[2] => $value,
             ]);
@@ -165,6 +178,15 @@ class Settings extends Component
             $record = Hours::find($this->dayOfWeek[$day][$index]['id']);
             $record->delete();
             unset($this->dayOfWeek[$day][$index]);
+        }
+    }
+
+    public function destroyTable($id, $index)
+    {
+        if($id) {
+            $record = Table::find($id);
+            $record->delete();
+            unset($this->tables[$index]);
         }
     }
 

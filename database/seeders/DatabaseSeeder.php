@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             HoursSeeder::class,
             RoomSeeder::class,
+            TableSeeder::class,
         ]);
 
 

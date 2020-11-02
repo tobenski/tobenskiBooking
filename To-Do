@@ -1,2 +1,10 @@
 Settings->Hours:
     - Fix udseende.
+
+
+Settings->Tables:
+    - Flyt borde mellem lokaler.
+    - Fix Flyt op ned eller drop det.
+
+Settings->Rooms:
+    ->Fix flyt op/ned eller drop det.

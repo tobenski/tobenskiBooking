@@ -51,4 +51,9 @@ class Profile extends Model
     {
         return $this->hasMany(Room::class);
     }
+
+    public function tables()
+    {
+        return $this->hasMany(Table::class);
+    }
 }
