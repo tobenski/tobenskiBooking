@@ -25,12 +25,5 @@ class UserSeeder extends Seeder
             'profile_id' => 1
         ]);
         $u->addRole('admin');
-        User::create([
-            'name' => 'Knudhule Badehotel',
-            'phone' => '42807678',
-            'email' => 'info@knudhule.dk',
-            'password' => Hash::make('Password'),
-            'email_verified_at' => Carbon::now(),
-        ]);
     }
 }

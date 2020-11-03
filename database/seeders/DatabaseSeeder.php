@@ -21,8 +21,8 @@ class DatabaseSeeder extends Seeder
             ProfileSeeder::class,
             UserSeeder::class,
             HoursSeeder::class,
-            RoomSeeder::class,
-            TableSeeder::class,
+            //RoomSeeder::class,
+            //TableSeeder::class,
         ]);
 
 

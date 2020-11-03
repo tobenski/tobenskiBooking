@@ -19,6 +19,6 @@ class ProfileSeeder extends Seeder
             'email' => 'kontakt@det-gamle-posthus.dk',
             'phone' => '42807678'
         ]);
-        Profile::factory(10)->create();
+        //Profile::factory(10)->create();
     }
 }

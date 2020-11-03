@@ -56,4 +56,9 @@ class Profile extends Model
     {
         return $this->hasMany(Table::class);
     }
+
+    public function bookingSetting()
+    {
+        return $this->hasOne(BookingSetting::class);
+    }
 }
