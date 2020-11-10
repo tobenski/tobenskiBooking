@@ -21,8 +21,11 @@
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.js" defer></script>
         <script src="https://kit.fontawesome.com/c4b1104435.js" crossorigin="anonymous"></script>
     </head>
-    <body class="h-screen">
+    <body class="h-screen w-screen items-center overflow-x-hidden justify-center">
         @livewire('navbar')
+        <div class="fixed bottom-2 w-full flex items-center justify-center">
+            @livewire('alert')
+        </div>
         <main class="flex w-full bg-gray-300 flex-col md:flex-row min-h-full pt-6">
             @auth
                 <aside class="w-72">

@@ -9,14 +9,20 @@
        <i class="fas fa-clock w-6"></i>
        <span class="pl-2">{{ __('Åbningstider') }}</span>
     </a>
-    <a href="{{ route('settings', 'tables') }}"
-       class="hover:bg-gray-400 pl-4 {{ (request()->is('settings/tables')) ? 'bg-gray-400' : '' }}">
-       <i class="fas fa-chair w-6"></i>
-       <span class="pl-2">{{ __('Borde') }}</span>
-    </a>
     <a href="{{ route('settings', 'rooms') }}"
        class="hover:bg-gray-400 pl-4 {{ (request()->is('settings/rooms')) ? 'bg-gray-400' : '' }}">
        <i class="fas fa-hotel w-6"></i>
        <span class="pl-2">{{ __('Lokaler') }}</span>
     </a>
+    <a href="{{ route('settings', 'tables') }}"
+       class="hover:bg-gray-400 pl-4 {{ (request()->is('settings/tables')) ? 'bg-gray-400' : '' }}">
+       <i class="fas fa-chair w-6"></i>
+       <span class="pl-2">{{ __('Borde') }}</span>
+    </a>
+    <a href="{{ route('settings', 'booking') }}"
+    class="hover:bg-gray-400 pl-4 {{ (request()->is('settings/booking')) ? 'bg-gray-400' : '' }}">
+    <i class="fas fa-calendar-check w-6"></i>
+    <span class="pl-2">{{ __('Booking') }}</span>
+ </a>
+
 </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\BookingSetting;
 use App\Models\Hours;
 use App\Models\Profile;
 use App\Models\Room;
@@ -18,6 +19,7 @@ class Settings extends Component
     public Hours $newhour;
     public $rooms;
     public $tables;
+    public $booking;
 
     public $dayOfWeekHeader = [];
     public $dayOfWeekName = [];
@@ -38,7 +40,8 @@ class Settings extends Component
         ]);
         $this->rooms = $this->profile->rooms;
         $this->tables = $this->profile->tables;
-
+        $this->booking = $this->profile->bookingSetting;
+        $this->alertCounter = 1;
     }
 
     public function render()
@@ -74,19 +77,35 @@ class Settings extends Component
         'tables.*.name' => 'required',
         'tables.*.priority' => 'required|integer|between:0,5',
         'tables.*.seats' => 'required',
+        // Booking Settings
+        'booking.duration' => 'required|integer',
+        'booking.empty_seats' => 'required|integer|between:0,20',
+        'booking.turnaround_time' => 'required|integer',
+        'booking.contact_via_phone' => 'boolean',
+        'booking.contact_via_email' => 'boolean',
+        'booking.email_confirmation' => 'boolean',
+        'booking.survey' => 'boolean',
+        'booking.tripadvisor_url' => 'nullable',
+        'booking.end_time' => 'boolean',
+        'booking.allow_cancel' => 'boolean',
+        'booking.gdpr_time' => 'integer|required',
+        'booking.online_min_pax' => 'required|integer|between:0,10',
+        'booking.online_max_pax' => 'required|integer|gte:booking.online_min_pax',
+
+
     ];
 
     public function updated($name, $value)
     {
         $this->validateOnly($name);
         $nameArray = explode(".", $name);
-        //list($propertyName, $day, $hour, $prop) =
         if($nameArray[0] == 'dayOfWeek')
         {
             $record = Hours::find($this->dayOfWeek[$nameArray[1]][$nameArray[2]]['id']);
             $record->update([
                 $nameArray[3] => $value,
             ]);
+            $name = __('Tidspunkt');
         } else if ($nameArray[0] == 'profile') {
             $this->profile->update([
                 $nameArray[1] => $value,
@@ -96,12 +115,19 @@ class Settings extends Component
             $record->update([
                 $nameArray[2] => $value,
             ]);
+            $name = $record->name;
         } else if ($nameArray[0] == 'tables') {
             $record = Table::find($this->tables[$nameArray[1]]['id']);
             $record->update([
                 $nameArray[2] => $value,
             ]);
+            $name = $record->name;
+        } else if ($nameArray[0] == 'booking') {
+            $this->booking->update([
+                $nameArray[1] => $value,
+            ]);
         }
+        $this->emit('showAlert', 'success', __($name) . ' er gemt!');
 
     }
 

@@ -1,11 +1,20 @@
+Settings:
+    - Ændre til at bruge components -> alts <x-settings.name />
+
 Settings->Hours:
     - Fix udseende.
 
 
 Settings->Tables:
+    - Ret overskrift
+    - Tilføj Nyt bord
     - Flyt borde mellem lokaler.
     - Fix Flyt op ned eller drop det.
     - Lav sammensatte borde.
 
 Settings->Rooms:
+    ->Tilføj Nyt Rum
     ->Fix flyt op/ned eller drop det.
+
+Settings->Booking:
+    ->Slyt selects ud i deres egne models.

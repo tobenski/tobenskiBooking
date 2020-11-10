@@ -4,7 +4,7 @@
 <div class="w-full">
     @switch($page)
         @case('profile')
-            @include('components.settings.profile')
+            @include('components.settings.profile') <!-- -->
             @break
         @case('hours')
             @include('components.settings.hours')
@@ -14,6 +14,9 @@
             @break
         @case('tables')
             @include('components.settings.tables')
+            @break
+        @case('booking')
+            @include('components.settings.booking')
             @break
         @default
         Unknown Page

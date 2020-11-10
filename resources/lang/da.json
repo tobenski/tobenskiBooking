@@ -1,0 +1,26 @@
+{
+    "profile.name": "Firmanavn",
+    "profile.email": "Firma Email",
+    "profile.phone": "FirmaTelefon",
+    "profile.address": "Firma adresse",
+    "profile.zip": "Postnummer",
+    "profile.city": "By",
+    "profile.country": "Land",
+    "profile.lang": "Sprog",
+    "profile.timezone": "Tidszone",
+    "profile.24_hour": "24 timers ur",
+
+    "booking.duration": "Varighed",
+    "booking.empty_seats": "Tomme Pladser",
+    "booking.turnaround_time": "Turnaround",
+    "booking.contact_via_phone": "Kontakt via telefon",
+    "booking.contact_via_email": "Kontakt via Email",
+    "booking.email_confirmation": "Email Bekræftelse",
+    "booking.survey": "Tilfredshedsundersøgelse",
+    "booking.tripadvisor_url": "Tripadvisor profil url",
+    "booking.end_time": "Oplys sluttidspunkt",
+    "booking.allow_cancel": "Tillad afbestilling",
+    "booking.gdpr_time": "GDPR Opbevaringstid",
+    "booking.online_min_pax": "Minimum antal gæster online",
+    "booking.online_max_pax": "Maximum antal gæster online"
+}

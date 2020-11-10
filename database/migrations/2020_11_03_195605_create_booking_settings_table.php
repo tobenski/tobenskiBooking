@@ -22,7 +22,7 @@ class CreateBookingSettingsTable extends Migration
             $table->boolean('contact_via_email')->default(true);
             $table->boolean('email_confirmation')->default(true);
             $table->boolean('survey')->default(true);
-            $table->string('tripadvisor_url')->default('https://www.tripadvisor.com');
+            $table->string('tripadvisor_url')->nullable();
             $table->boolean('end_time')->default(false);
             $table->boolean('allow_cancel')->default(true);
             $table->integer('gdpr_time')->default(12);

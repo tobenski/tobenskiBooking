@@ -1,0 +1,19 @@
+.alert {
+    @apply text-center p-2 items-center text-indigo-100 leading-none rounded-full inline-flex;
+}
+
+.alert-danger {
+    @apply bg-red-500;
+}
+
+.alert-success {
+    @apply bg-green-500;
+}
+
+.alert-info {
+    @apply bg-blue-500;
+}
+
+.alert-warning {
+    @apply bg-yellow-500;
+}

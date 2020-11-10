@@ -117,15 +117,6 @@
                 @enderror
             </div>
         </div>
-        <div class="md:flex md:items-center">
-            <div class="md:w-1/3"></div>
-            <div class="md:w-2/3 md:flex md:justify-end">
-              <button class="shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-                      type="submit">
-                Opdater
-              </button>
-            </div>
-          </div>
     </form>
     <hr class="my-2">
     <h1 class="text-3xl text-gray-800">{{ __('Regionalle instillinger') }}</h1>
@@ -184,14 +175,5 @@
                 @enderror
             </div>
         </div>
-        <div class="md:flex md:items-center">
-            <div class="md:w-1/3"></div>
-            <div class="md:w-2/3 md:flex md:justify-end">
-              <button class="shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-                      type="submit">
-                Opdater
-              </button>
-            </div>
-          </div>
     </form>
 </div>

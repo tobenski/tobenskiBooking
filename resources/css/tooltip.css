@@ -1,0 +1,7 @@
+.tooltip .tooltip-text {
+    @apply invisible px-4 py-2 absolute z-50 mt-2 inline-block text-sm rounded-lg ;
+  }
+
+  .tooltip:hover .tooltip-text {
+    @apply visible;
+  }
